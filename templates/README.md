@@ -21,7 +21,7 @@ Explain the problem, who this helps, and the useful result in two sentences. Sta
 
 ## Demo
 
-Add a real screenshot, short recording, or terminal transcript showing input → action → result. Include a text description and expected output. Keep demo media in `assets/` and link to a reproducible example.
+Record a real input → action → result workflow using the included [terminal demo tutorial](docs/terminal-demo.md). Replace the inherited `assets/terminal-demo.gif` with your own recording before embedding it here. Include a text description, the runnable command, and expected output. For a visual app, use a screenshot or short screen recording instead.
 
 ## Quick start
 

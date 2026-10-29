@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/hero.svg" alt="Open Source Toolkit — a professional starting point for your next open-source project" width="100%">
+  <img src="https://raw.githubusercontent.com/aaitor/assets/bf67a4394c40ae5cfd6adf2d864446b437b2a89a/banners/oss-repo-template.svg" alt="Open Source Toolkit — a professional starting point for your next open-source project" width="100%">
 </p>
 
 <h1 align="center">Open Source Toolkit</h1>
@@ -17,11 +17,19 @@
 
 Publish personal tools with a recognizable identity, clear onboarding, and the community files people expect. This is a **GitHub template**, with no application framework or runtime imposed on the projects you create.
 
-## Preview
+## Demo
 
-![Example project header using the shared visual system](assets/example-hero.svg)
+![Terminal demo: customize a project and generate its README and banners](assets/terminal-demo.gif)
 
-One visual family, a distinct name and promise for each project. The editable SVG headers work on light and dark GitHub pages. Keep your actual product demo separate from this artwork.
+Watch the real customization workflow create a README, hero banner, and social card in a temporary project. Try the same workflow without changing your checkout:
+
+```bash
+python3 examples/terminal-demo/demo.py
+```
+
+Follow the [practical tutorial](docs/terminal-demo.md) to record it yourself or adapt it to your next tool. The [VHS tape](examples/terminal-demo/demo.tape) and [shared terminal theme](examples/terminal-demo/theme.tape) are included. The text tutorial includes expected output.
+
+The header uses a banner from [aaitor/assets](https://github.com/aaitor/assets), pinned to a specific revision. New projects generate their own local artwork using the same visual system.
 
 ## Quick start
 
@@ -52,6 +60,7 @@ Then add your code, real installation commands, a working example, and a product
 | Part | What you get |
 | --- | --- |
 | Identity | Editable navy-and-mint hero, example header, social card, and [brand guide](docs/branding.md) |
+| Demo | Real animated terminal demo, reproducible VHS tape, runnable example, and [practical tutorial](docs/terminal-demo.md) |
 | Onboarding | [README starter](templates/README.md), [recommended structure](docs/readme-guide.md), and examples guidance |
 | Community | Contributing guide, code of conduct, private security contact, bug and feature forms, PR template |
 | Maintenance | Changelog, release-note categories, editor settings, and dependency updates for Actions |
@@ -65,7 +74,8 @@ Then add your code, real installation commands, a working example, and a product
 assets/               Editable hero artwork and social-preview assets
 docs/                 README, branding, licensing, launch, and design guides
 examples/             Guidance for complete, runnable project examples
-scripts/              Local setup and repository checks; Python standard library
+scripts/              Local setup, shared banner renderer, and repository checks
+shared-assets.json    Source revision for shared artwork and terminal styling
 templates/README.md   README starter for your next project
 CONTRIBUTING.md       How to contribute
 CODE_OF_CONDUCT.md    Community expectations and reporting
@@ -86,6 +96,8 @@ For your own projects the defaults are `aaitor`, Aitor Argomaniz, and the public
 
 ## Documentation
 
+- [Record a terminal demo, step by step](docs/terminal-demo.md)
+- [Shared branding library](https://github.com/aaitor/assets)
 - [Write a README people can use](docs/readme-guide.md)
 - [Branding and social previews](docs/branding.md)
 - [Repositories worth studying](docs/showcase.md)

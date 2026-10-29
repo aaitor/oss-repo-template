@@ -30,3 +30,9 @@ Alternatively export the SVG to PNG in a vector editor. The PNG should be under 
 Place a real screenshot, small GIF/WebP, or terminal recording after the introduction. Give it descriptive alt text, sample input, and expected output. Avoid autoplay, large files, fake benchmarks, and unreadable full-screen captures. The hero establishes identity; the demo shows the software working.
 
 Use a short author footer linking to the maintainer profile. Adopters may replace the name, colors, and artwork; preserve required license notices.
+
+## Shared asset library
+
+[aaitor/assets](https://github.com/aaitor/assets) is the shared home for banners, social cards, README components, and the VHS terminal theme. This template embeds its banner using a commit-pinned raw URL. `shared-assets.json` records the source revision and copied file mappings; generated projects keep their artwork locally so they work independently.
+
+To update shared components, review the upstream change, copy the selected renderer/theme files, update the manifest revision and any pinned image URLs, then regenerate and check the affected assets. No remote code is downloaded or executed by setup. The terminal demo tutorial explains how to use the shared theme.

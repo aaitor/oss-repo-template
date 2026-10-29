@@ -6,29 +6,9 @@ import json
 from pathlib import Path
 import re
 
+from branding import artwork
+
 ROOT = Path(__file__).resolve().parents[1]
-
-
-def artwork(title, tagline, owner, author, height=420):
-    title, tagline, owner, author = map(html.escape, (title, tagline, owner, author))
-    offset = (height - 420) // 2
-    return f'''<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="{height}" viewBox="0 0 1280 {height}" role="img" aria-labelledby="title desc">
-<title id="title">{title}</title><desc id="desc">{tagline} — by {author}</desc>
-<defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="#233149"/></pattern></defs>
-<rect width="1280" height="{height}" rx="20" fill="#101827"/>
-<rect width="1280" height="{height}" rx="20" fill="url(#grid)" opacity=".45"/>
-<g transform="translate(0 {offset})" font-family="DejaVu Sans, Arial, sans-serif">
-<rect x="64" y="58" width="36" height="36" rx="10" fill="#89E5CC"/>
-<path d="M 73 82 L 82 68 L 91 82 M 77 78 H 87" fill="none" stroke="#101827" stroke-width="2.5"/>
-<text x="116" y="82" font-size="15" letter-spacing="2.4" fill="#9CAEC4">{owner.upper()} / OPEN SOURCE</text>
-<text x="64" y="191" font-size="51" font-weight="700" letter-spacing="-1.5" fill="#F4F7FB">{title}</text>
-<text x="66" y="242" font-size="22" fill="#89E5CC">{tagline}</text>
-<path d="M 64 319 H 1216" stroke="#2B3B51"/>
-<text x="66" y="360" font-size="16" fill="#9CAEC4">Built by {author}</text>
-<text x="1216" y="360" text-anchor="end" font-size="14" fill="#9CAEC4" font-family="DejaVu Sans Mono, monospace">github.com/{owner}</text>
-<g transform="translate(1030 90)"><rect width="154" height="154" rx="30" fill="#17263B" stroke="#37516A"/>
-<path d="M 61 52 L 36 77 L 61 102 M 93 52 L 118 77 L 93 102 M 86 42 L 68 112" fill="none" stroke="#89E5CC" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-<circle cx="143" cy="12" r="12" fill="#89E5CC"/></g></g></svg>'''
 
 
 def main():
@@ -75,8 +55,10 @@ def main():
         path.write_text(text.replace('MIT License\n',f'MIT License\n\n{notice}',1))
     (ROOT/'CHANGELOG.md').write_text('# Changelog\n\n## Unreleased\n\nRecord your project changes here before the first release.\n')
     state.write_text(json.dumps({key:getattr(args,key) for key in ('owner','repo','author','contact')},indent=2)+'\n')
-    print(f'Customized {args.owner}/{args.repo}. Review README.md; add real installation steps and a demo.')
-    print('Export assets/social-preview.svg to PNG, then upload in GitHub Settings → Social preview.')
+    print(f'Customized {args.owner}/{args.repo}.')
+    print('Review README.md; add real installation steps and a demo.')
+    print('Export assets/social-preview.svg to PNG.')
+    print('Upload it in GitHub Settings → Social preview.')
     print('Run python3 scripts/check.py, then review and commit the changes.')
 
 

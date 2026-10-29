@@ -67,10 +67,14 @@ def check_setup():
 
 def main():
     errors = check_files(ROOT)+check_setup()
+    demo = subprocess.run([sys.executable, str(ROOT / 'examples/terminal-demo/demo.py')],
+                          capture_output=True, text=True)
+    if demo.returncode or 'Temporary example removed on exit.' not in demo.stdout:
+        errors.append('Terminal demo failed: ' + demo.stderr)
     if errors:
         print('\n'.join(errors),file=sys.stderr)
         raise SystemExit(1)
-    print('OK: local documentation targets, SVGs, customization, escaping, MIT terms, overwrite protection.')
+    print('OK: local documentation targets, SVGs, customization, escaping, MIT terms, overwrite protection, terminal demo.')
 
 
 if __name__ == '__main__':

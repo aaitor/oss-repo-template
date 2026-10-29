@@ -1,0 +1,9 @@
+{
+  "repository": "https://github.com/aaitor/assets",
+  "revision": "bf67a4394c40ae5cfd6adf2d864446b437b2a89a",
+  "files": {
+    "scripts/branding.py": "scripts/branding.py",
+    "examples/terminal-demo/theme.tape": "terminal/theme.tape",
+    "assets/hero.svg": "banners/oss-repo-template.svg"
+  }
+}
