@@ -1,10 +1,11 @@
-"""Personalize a fresh template checkout using the Python standard library."""
+"""Personalize a fresh template checkout using Python and the bundled Node.js banner kit."""
 import argparse
 import datetime
 import html
 import json
 from pathlib import Path
 import re
+import subprocess
 
 from branding import artwork
 
@@ -15,7 +16,10 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--repo', required=True)
     parser.add_argument('--title', required=True, help='At most 32 characters')
-    parser.add_argument('--tagline', required=True, help='At most 76 characters')
+    parser.add_argument('--tagline', required=True, help='At most 60 characters')
+    parser.add_argument('--banner-style', default='diagonal-drift', help='Banner style slug; default: diagonal-drift (1a)')
+    parser.add_argument('--banner-seed', type=int, default=7, help='Repeatable banner pattern seed')
+    parser.add_argument('--static-banner', action='store_true', help='Disable banner animation')
     parser.add_argument('--owner', default='aaitor')
     parser.add_argument('--author', default='Aitor Argomaniz')
     parser.add_argument('--contact', default='aaitor@gmail.com', help='Public reporting email')
@@ -25,7 +29,7 @@ def main():
         parser.error('Use a valid GitHub repository name.')
     if not re.fullmatch(r'[A-Za-z0-9][A-Za-z0-9-]{0,38}', args.owner):
         parser.error('Use a valid GitHub owner.')
-    for name, limit in [('title',32), ('tagline',76), ('author',48)]:
+    for name, limit in [('title',32), ('tagline',60), ('author',48)]:
         value = getattr(args,name)
         if not value.strip() or len(value)>limit or any(ord(c)<32 for c in value):
             parser.error(f'{name} must contain 1–{limit} printable characters.')
@@ -38,6 +42,20 @@ def main():
     starter = (ROOT/'templates/README.md').read_text()
     values = {key.upper():html.escape(getattr(args,key)) for key in ('repo','owner','title','tagline','author')}
     readme = re.sub(r'\{\{(REPO|OWNER|TITLE|TAGLINE|AUTHOR)\}\}',lambda m:values[m[1]],starter)
+    # Generate before editing project files, so missing Node or an invalid style
+    # cannot leave customization partially applied. No network access is needed.
+    try:
+        hero = subprocess.check_output([
+            'node', str(ROOT / 'banner-kit/make-banner.mjs'),
+            '--style', args.banner_style, '--repo', args.title,
+            '--tagline', args.tagline, '--handle', '@' + args.owner,
+            '--seed', str(args.banner_seed),
+            '--animate', 'false' if args.static_banner else 'true',
+        ], text=True, stderr=subprocess.PIPE)
+    except FileNotFoundError:
+        parser.error('Node.js 18+ is required to generate banners; install it and retry.')
+    except subprocess.CalledProcessError as exc:
+        parser.error('Banner generation failed: ' + exc.stderr.strip())
     for name in ('CONTRIBUTING.md','CODE_OF_CONDUCT.md','SECURITY.md'):
         path = ROOT/name
         text = path.read_text().replace(f"github.com/{previous['owner']}/{previous['repo']}",f'github.com/{args.owner}/{args.repo}')
@@ -45,8 +63,8 @@ def main():
         text = text.replace(previous['author'],args.author).replace(previous['contact'],args.contact)
         path.write_text(text)
     (ROOT/'README.md').write_text(readme)
-    for filename,height in [('hero.svg',420),('social-preview.svg',640)]:
-        (ROOT/'assets'/filename).write_text(artwork(args.title,args.tagline,args.owner,args.author,height)+'\n')
+    (ROOT/'assets/hero.svg').write_text(hero)
+    (ROOT/'assets/social-preview.svg').write_text(artwork(args.title,args.tagline,args.owner,args.author,640)+'\n')
     (ROOT/'assets/social-preview.png').unlink(missing_ok=True)
     notice = f'Copyright (c) {datetime.date.today().year} {args.author}'
     path = ROOT/'LICENSE'

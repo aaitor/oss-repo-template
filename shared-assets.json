@@ -1,9 +1,15 @@
 {
   "repository": "https://github.com/aaitor/assets",
-  "revision": "bf67a4394c40ae5cfd6adf2d864446b437b2a89a",
+  "revision": "c266bc652bc77865d0b1a45b778f3451163a5726",
   "files": {
     "scripts/branding.py": "scripts/branding.py",
     "examples/terminal-demo/theme.tape": "terminal/theme.tape",
-    "assets/hero.svg": "banners/oss-repo-template.svg"
+    "assets/hero.svg": "banners/oss-repo-template.svg",
+    "banner-kit/README.md": "banner-kit/README.md",
+    "banner-kit/NOTICE.md": "banner-kit/NOTICE.md",
+    "banner-kit/make-banner.mjs": "banner-kit/make-banner.mjs",
+    "banner-kit/fonts.css": "banner-kit/fonts.css",
+    "banner-kit/licenses/Geist-OFL.txt": "banner-kit/licenses/Geist-OFL.txt",
+    "banner-kit/licenses/Instrument-Serif-OFL.txt": "banner-kit/licenses/Instrument-Serif-OFL.txt"
   }
 }

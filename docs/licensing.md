@@ -14,7 +14,7 @@ For personal tools, scripts, CLIs, and skills, use **MIT** as the default. It is
 
 Both licenses have conditions; neither means unrestricted use without retaining notices. Apache-2.0 also expressly excludes trademark permission. Neither license is a requirement to advertise the original author or to keep a marketing footer.
 
-This template uses MIT for original code, documentation, and artwork. Adopters may replace its visible personal branding while retaining the required license and copyright notices. Do not imply endorsement by the original author. Third-party materials keep their own terms.
+This template uses MIT for original code, documentation, and artwork. Adopters may replace its visible personal branding while retaining the required license and copyright notices. Do not imply endorsement by the original author. Third-party materials keep their own terms. The banner kit embeds Instrument Serif, Geist, and Geist Mono under SIL OFL 1.1; preserve the [bundled font notices](../banner-kit/NOTICE.md).
 
 ## Applying your choice
 

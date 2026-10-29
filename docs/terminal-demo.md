@@ -24,7 +24,7 @@ No account, API key, or paid service is needed. This command demonstrates the pu
 
 ## 2. Install the recorder
 
-Use [Charmbracelet VHS's official installation instructions](https://github.com/charmbracelet/vhs#installation). VHS needs `ttyd` and `ffmpeg` on PATH; Python 3.10+ runs this example. This recording was produced with VHS 0.12.1 and ttyd 1.7.7. The example uses Bash and DejaVu Sans Mono; install that font or change `FontFamily` in the theme.
+Use [Charmbracelet VHS's official installation instructions](https://github.com/charmbracelet/vhs#installation). VHS needs `ttyd` and `ffmpeg` on PATH; Python 3.10+ and Node.js 18+ run this example. This recording was produced with VHS 0.12.1 and ttyd 1.7.7. The example uses Bash and DejaVu Sans Mono; install that font or change `FontFamily` in the theme.
 
 ## 3. Render the GIF
 

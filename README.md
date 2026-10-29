@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/aaitor/assets/bf67a4394c40ae5cfd6adf2d864446b437b2a89a/banners/oss-repo-template.svg" alt="Open Source Toolkit — a professional starting point for your next open-source project" width="100%">
+  <img src="https://raw.githubusercontent.com/aaitor/assets/c266bc652bc77865d0b1a45b778f3451163a5726/banners/oss-repo-template.svg" alt="Open Source Toolkit — a professional starting point for your next open-source project" width="100%">
 </p>
 
 <h1 align="center">Open Source Toolkit</h1>
@@ -29,11 +29,11 @@ python3 examples/terminal-demo/demo.py
 
 Follow the [practical tutorial](docs/terminal-demo.md) to record it yourself or adapt it to your next tool. The [VHS tape](examples/terminal-demo/demo.tape) and [shared terminal theme](examples/terminal-demo/theme.tape) are included. The text tutorial includes expected output.
 
-The header uses a banner from [aaitor/assets](https://github.com/aaitor/assets), pinned to a specific revision. New projects generate their own local artwork using the same visual system.
+The header uses the **diagonal-drift (1a)** banner from [aaitor/assets](https://github.com/aaitor/assets), pinned to a specific revision. New projects generate their own local artwork using the same bundled banner kit. See [how to generate or change banners](docs/banner-generation.md).
 
 ## Quick start
 
-**Prerequisites:** Git, Python 3.10+, and optionally the authenticated [GitHub CLI](https://cli.github.com/).
+**Prerequisites:** Git, Python 3.10+, Node.js 18+, and optionally the authenticated [GitHub CLI](https://cli.github.com/).
 
 Click **[Use this template](https://github.com/aaitor/oss-repo-template/generate)**, create your repository, and clone it. Or use:
 
@@ -59,7 +59,7 @@ Then add your code, real installation commands, a working example, and a product
 
 | Part | What you get |
 | --- | --- |
-| Identity | Editable navy-and-mint hero, example header, social card, and [brand guide](docs/branding.md) |
+| Identity | Seven-style banner kit, default diagonal-drift (1a) hero, social card, and [generation guide](docs/banner-generation.md) |
 | Demo | Real animated terminal demo, reproducible VHS tape, runnable example, and [practical tutorial](docs/terminal-demo.md) |
 | Onboarding | [README starter](templates/README.md), [recommended structure](docs/readme-guide.md), and examples guidance |
 | Community | Contributing guide, code of conduct, private security contact, bug and feature forms, PR template |
@@ -74,7 +74,8 @@ Then add your code, real installation commands, a working example, and a product
 assets/               Editable hero artwork and social-preview assets
 docs/                 README, branding, licensing, launch, and design guides
 examples/             Guidance for complete, runnable project examples
-scripts/              Local setup, shared banner renderer, and repository checks
+banner-kit/           Seven-style Node.js banner generator and embedded fonts
+scripts/              Local setup, social-card renderer, and repository checks
 shared-assets.json    Source revision for shared artwork and terminal styling
 templates/README.md   README starter for your next project
 CONTRIBUTING.md       How to contribute
@@ -92,6 +93,8 @@ Add `src/` and `tests/` when your project needs them; retain the native layout o
 python3 scripts/customize.py --help
 ```
 
+Banners default to `diagonal-drift` (1a), seed `7`, with animation enabled. Use `--banner-style orbit-arcs`, `--banner-seed 12`, or `--static-banner` to change these during setup. You can also [regenerate just the banner](docs/banner-generation.md) without rerunning customization.
+
 For your own projects the defaults are `aaitor`, Aitor Argomaniz, and the public contact in his GitHub profile. Other maintainers should pass `--owner`, `--author`, and `--contact`. Personalization refuses to overwrite a customized project unless `--force` is supplied. No API keys or environment variables are needed.
 
 ## Documentation
@@ -99,6 +102,7 @@ For your own projects the defaults are `aaitor`, Aitor Argomaniz, and the public
 - [Record a terminal demo, step by step](docs/terminal-demo.md)
 - [Shared branding library](https://github.com/aaitor/assets)
 - [Write a README people can use](docs/readme-guide.md)
+- [Generate banners programmatically](docs/banner-generation.md)
 - [Branding and social previews](docs/branding.md)
 - [Repositories worth studying](docs/showcase.md)
 - [Choose a permissive license](docs/licensing.md)

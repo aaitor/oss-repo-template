@@ -62,6 +62,34 @@ def check_setup():
         second = subprocess.run(command,capture_output=True,text=True)
         if second.returncode == 0 or before != (root/'README.md').read_bytes():
             errors.append('Overwrite protection failed.')
+        hero = ET.parse(root / 'assets/hero.svg').getroot()
+        ns = '{http://www.w3.org/2000/svg}'
+        if hero.attrib.get('viewBox') != '0 0 1280 320':
+            errors.append('Setup did not generate the new banner dimensions.')
+        if [node.text for node in hero.findall(ns + 'text')] != [
+                '@example-owner', 'Example & Tool', 'A useful <result>.']:
+            errors.append('Banner metadata or XML escaping is incorrect.')
+        if 'data:font/woff2;base64,' not in (root / 'assets/hero.svg').read_text():
+            errors.append('Banner fonts were not embedded.')
+        static = subprocess.run(command + ['--force', '--banner-style', 'orbit-arcs',
+                                '--banner-seed', '12', '--static-banner'],
+                                capture_output=True, text=True)
+        generated = (root / 'assets/hero.svg').read_text()
+        if static.returncode or '@keyframes' in generated or '#14243d' not in generated:
+            errors.append('Static orbit-arcs banner customization failed: ' + static.stderr)
+        expected = subprocess.check_output([
+            'node', str(root / 'banner-kit/make-banner.mjs'), '--style', 'orbit-arcs',
+            '--repo', 'Example & Tool', '--tagline', 'A useful <result>.',
+            '--handle', '@example-owner', '--seed', '12', '--animate', 'false'], text=True)
+        if generated != expected:
+            errors.append('Customization did not forward banner options correctly.')
+        before = {name: (root / name).read_bytes() for name in [
+            'README.md', 'assets/hero.svg', 'CONTRIBUTING.md', '.template-state.json']}
+        invalid = subprocess.run(command + ['--force', '--banner-style', 'unknown-style'],
+                                 capture_output=True, text=True)
+        if invalid.returncode == 0 or any((root / name).read_bytes() != content
+                                          for name, content in before.items()):
+            errors.append('Invalid banner generation modified project files.')
         return errors + check_files(root)
 
 
@@ -74,7 +102,7 @@ def main():
     if errors:
         print('\n'.join(errors),file=sys.stderr)
         raise SystemExit(1)
-    print('OK: local documentation targets, SVGs, customization, escaping, MIT terms, overwrite protection, terminal demo.')
+    print('OK: local documentation targets, SVGs, customization, escaping, MIT terms, overwrite protection, banner options/failure handling, terminal demo.')
 
 
 if __name__ == '__main__':

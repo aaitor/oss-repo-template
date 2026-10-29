@@ -47,6 +47,8 @@ Describe the input, processing steps, and output in one paragraph. Add a small d
 
 ## Documentation
 
+To change the README banner, follow the [banner generation guide](docs/banner-generation.md); shared sources live in [aaitor/assets](https://github.com/aaitor/assets).
+
 Link to installation, configuration, and troubleshooting guides as you add them. The template's [launch checklist](docs/launch-checklist.md) helps prepare the first public version.
 
 ## Contributing and support
