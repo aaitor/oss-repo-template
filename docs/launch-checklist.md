@@ -12,7 +12,9 @@
 - [ ] Add code in the layout appropriate to the project; add meaningful tests and stack-specific CI.
 - [ ] Test installation and the first example in a clean environment, including expected output.
 - [ ] State prerequisites, supported platforms, maturity, limitations, and relevant external-service costs.
-- [ ] Add a real demo and at least one runnable example; remove unused template docs/assets.
+- [ ] Record a real demo using the [approved preset](../templates/demo/README.md): black background, brief install → actual invocation → result/approval. For skills, use the actual harness.
+- [ ] Visually check the GIF; document prerequisites and omitted waiting time, and keep live recordings out of CI.
+- [ ] Add at least one runnable example; remove unused template docs/assets.
 - [ ] Run `python3 scripts/check.py`; verify application-specific checks separately.
 
 ## GitHub presentation and community

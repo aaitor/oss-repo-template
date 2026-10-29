@@ -27,6 +27,8 @@ Watch the real customization workflow create a README, hero banner, and social c
 python3 examples/terminal-demo/demo.py
 ```
 
+Future demos default to a **black background and a short install → real invocation → result/approval sequence**. For agent skills, use real Claude Code. See the [approved demo preset](templates/demo/README.md).
+
 Follow the [practical tutorial](docs/terminal-demo.md) to record it yourself or adapt it to your next tool. The [VHS tape](examples/terminal-demo/demo.tape) and [shared terminal theme](examples/terminal-demo/theme.tape) are included. The text tutorial includes expected output.
 
 The header uses the **diagonal-drift (1a)** banner from [aaitor/assets](https://github.com/aaitor/assets), pinned to a specific revision. New projects generate their own local artwork using the same bundled banner kit. See [how to generate or change banners](docs/banner-generation.md).
@@ -99,6 +101,7 @@ For your own projects the defaults are `aaitor`, Aitor Argomaniz, and the public
 
 ## Documentation
 
+- [Approved demo specifications and harness starter](templates/demo/README.md)
 - [Record a terminal demo, step by step](docs/terminal-demo.md)
 - [Shared branding library](https://github.com/aaitor/assets)
 - [Write a README people can use](docs/readme-guide.md)

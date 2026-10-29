@@ -21,7 +21,7 @@ Explain the problem, who this helps, and the useful result in two sentences. Sta
 
 ## Demo
 
-Record a real input → action → result workflow using the included [terminal demo tutorial](docs/terminal-demo.md). Replace the inherited `assets/terminal-demo.gif` with your own recording before embedding it here. Include a text description, the runnable command, and expected output. For a visual app, use a screenshot or short screen recording instead.
+Use the [approved demo preset](templates/demo/README.md): a black background and a short installation → actual tool/harness invocation → result or approval prompt. For agent skills, record real Claude Code usage. Follow the [terminal demo tutorial](docs/terminal-demo.md). Replace the inherited `assets/terminal-demo.gif` with your own recording before embedding it here. Include a text description, the runnable command, and expected output. For a visual app, use a screenshot or short screen recording instead.
 
 ## Quick start
 
